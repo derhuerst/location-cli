@@ -18,9 +18,11 @@ if (argv.help || argv.h) {
 Usage:
     location
     location --json
+    location --comma
 
 Options:
-    --json  -j  Output data as JSON. Default: false
+    --json   -j  Output data as JSON. Default: false
+    --comma  -c  Output data in "lat, long" format. Default: false
 \n`)
 	process.exit()
 }
@@ -42,6 +44,13 @@ getLocation((err, loc) => {
 
 	if (argv.json || argv.j) {
 		process.stdout.write(JSON.stringify(loc) + '\n')
+		return
+	}
+	if (argv.comma || argv.c) {
+		process.stdout.write([
+			loc.latitude.toFixed(7),
+			loc.longitude.toFixed(7)
+		].join(', ') + '\n')
 		return
 	}
 

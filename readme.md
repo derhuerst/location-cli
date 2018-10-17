@@ -22,9 +22,13 @@ npm install -g location-cli
 location
 # latitude:  52.12345
 # longitude: 13.12345
+# precision: 65
 
 location --json
-# {"latitude": 52.12345, "longitude": 13.12345}
+# {"latitude": 52.12345, "longitude": 13.12345, "precision": 65, "native": true}
+
+location --comma
+# 52.12345, 13.12345
 ```
 
 
